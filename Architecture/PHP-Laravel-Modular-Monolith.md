@@ -35,6 +35,7 @@ Define the default architecture guidance for a Laravel modular monolith.
 - Prefer module-owned tables and model workflows.
 - Do not let one module become the shared dump site for unrelated data.
 - Use events, queued jobs, and actions for cross-module workflows when that improves separation.
+- Apply new migrations immediately after creating them during development so downstream implementation targets the real schema state.
 
 ## Testing
 

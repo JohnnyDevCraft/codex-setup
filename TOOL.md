@@ -11,6 +11,7 @@ This folder centralizes reusable tool definitions across projects.
 
 ## Tool Index
 
+- [Image Gen](./tools/Image-Gen.md)
 - [Theme Maker](./tools/Theme-Maker.md)
 
 ## Tool Categories
@@ -36,6 +37,8 @@ Each tool file should include at minimum:
 - URL
 - Tool Description
 - Primary Use Cases
+- Dependencies
+- Install Instructions
 - Tool Commands
 - MCP JSON
 - Tool Inputs
@@ -60,6 +63,32 @@ The `Outputs` section should describe:
 
 For manual tools, the `Outputs` section should describe the final artifact produced by the tool, even when AI is only responsible for preparing input content or guidance.
 
+## Dependencies Section
+
+Each tool file must include a `Dependencies` section.
+
+The `Dependencies` section should describe:
+
+- Required software
+- Required services or accounts
+- Runtime or platform prerequisites
+- Related tools, libraries, or systems the tool depends on
+
+If a tool has no meaningful dependency information yet, state that explicitly instead of omitting the section.
+
+## Install Instructions Section
+
+Each tool file must include an `Install Instructions` section.
+
+The `Install Instructions` section should describe:
+
+- How the tool is installed or accessed
+- Any required environment setup
+- Login or configuration requirements
+- Whether installation is not applicable for manual or hosted tools
+
+If installation is not applicable, state that clearly.
+
 ## New Tool Intake Workflow
 
 When a user asks to add a new tool to the system, capture the following information before or while creating the tool file.
@@ -71,10 +100,12 @@ When a user asks to add a new tool to the system, capture the following informat
 3. What is the primary URL or home page for the tool?
 4. What is the short description of what the tool does?
 5. How is the tool used in our projects?
-6. What commands can AI run, if any?
-7. Does it have MCP access? If yes, what JSON shape or MCP call details matter?
-8. What inputs might AI be asked to prepare?
-9. For each input, what is it for, what format does it require, and what limits apply?
+6. What dependencies does the tool have?
+7. How is the tool installed, configured, or accessed?
+8. What commands can AI run, if any?
+9. Does it have MCP access? If yes, what JSON shape or MCP call details matter?
+10. What inputs might AI be asked to prepare?
+11. For each input, what is it for, what format does it require, and what limits apply?
 
 ### Helpful Follow-Up Questions
 

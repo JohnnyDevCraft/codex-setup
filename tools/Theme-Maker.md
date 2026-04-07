@@ -53,6 +53,20 @@ In one sentence: Theme Maker is a system for building structured, AI-assisted, e
 - Generate or revise theme images with AI assistance
 - Export a theme as portable assets and documentation
 
+## Dependencies
+
+- Hosted web application at [themes.xelseor.com](https://themes.xelseor.com)
+- Primary implementation currently lives in the Laravel application `theme-mkr-web`
+- Related theme source: `theme-unifiedflow`
+- Uses the user’s OpenAI API key for chat, transcription, and image generation workflows
+
+## Install Instructions
+
+- No local installation instructions are defined in this shared tool file at this time
+- Access is currently through the hosted application at [themes.xelseor.com](https://themes.xelseor.com)
+- A valid user account is required
+- The user must provide their own OpenAI API key for AI features
+
 ## Tool Commands
 
 None for shared-agent use at this time.
