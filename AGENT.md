@@ -19,16 +19,32 @@ Examples:
 - A TypeScript frontend should load [TypeScript](./standards/Typescript.md).
 - A JavaScript utility or script should load [JavaScript](./standards/Javascript.md).
 
+## Tool Requirement
+
+When a project depends on a named external tool, internal tool, console tool, MCP tool, or manual platform workflow, agents must review the shared tool catalog in [TOOL.md](./TOOL.md) and load the relevant tool file from `./tools` when one exists.
+
+Manual tools are especially important because agents may be asked to generate content for them even when the agent cannot operate the tool directly.
+
 ## Agent Workflow Rule
 
 When starting work in a project:
 
 1. Identify the languages and frameworks in use.
-2. Read [STD.md](./STD.md).
-3. Read each relevant standards file in `./standards`.
-4. Apply those standards when designing, implementing, reviewing, and testing code.
+2. Identify the architecture or architectures in use.
+3. Identify any relevant tools, platforms, or manual systems involved in the work.
+4. Read [STD.md](./STD.md).
+5. Read [ARCH.md](./ARCH.md).
+6. Read [TOOL.md](./TOOL.md).
+7. Read each relevant standards file in `./standards`.
+8. Read each relevant architecture file in `./Architecture`.
+9. Read each relevant tool file in `./tools`.
+10. Apply those standards, architecture rules, and tool constraints when designing, implementing, reviewing, and testing code or preparing user-facing tool content.
 
 If a project has its own local standards that extend these shared standards, agents should apply both. When standards conflict, the more specific project-level rule should win unless explicitly instructed otherwise.
+
+If a project has its own local architecture documentation, agents should apply both the shared architecture guidance and the project-specific architecture guidance. When architecture guidance conflicts, the more specific project-level architecture should win unless explicitly instructed otherwise.
+
+If a project has its own local tool documentation or workflow docs, agents should apply both the shared tool guidance and the project-specific tool guidance. When tool instructions conflict, the more specific project-level workflow should win unless explicitly instructed otherwise.
 
 ## Scope
 
