@@ -192,6 +192,8 @@ The AI should determine the current SpecKit phase by looking at:
 - Avoid skipping back into speculative design unless a blocker requires it
 - Do not implement undocumented requests; route them back through specify, clarify, plan, and tasks first when needed
 - Do not absorb new scope into the currently implemented spec once implementation is underway; create a new spec flow for the new change
+- After implementation is complete, create `results.md` alongside the spec artifacts for the active spec
+- In `results.md`, record every file that was created or modified, what changed, and why the change was made
 
 ### Agent Conduct Rule
 
@@ -209,11 +211,22 @@ The public Spec Kit flow commonly produces or relies on artifacts such as:
 - `spec.md`
 - `plan.md`
 - `tasks.md`
+- `results.md`
 
 These artifacts act as the structured context for implementation.
 They are also the governing source of truth for project intent, requirements,
 planning, and implementation sequencing while the project is operating in
 `SpecKit` mode.
+
+The `results.md` file is created after implementation is complete. It records every file that was created or modified during implementation, what changed in each file, and why the change was made. See the [results template](./SpecKit/templates/results.template.md).
+
+## Template Files
+
+Use the templates in [`./SpecKit/templates`](./SpecKit/templates).
+
+### Available Templates
+
+- [results.template.md](./SpecKit/templates/results.template.md)
 
 ## AI Responsibilities In SpecKit
 
@@ -238,6 +251,7 @@ planning, and implementation sequencing while the project is operating in
 - Maintain coherence between constitution-level decisions, feature-level decisions, and the evolving set of approved work
 - If the user changes the requested behavior, design, or scope, update the relevant SpecKit artifacts and tasks before coding the change
 - If the user changes the requested behavior, design, or scope after implementation has started, create a new SpecKit change flow instead of extending the in-flight implemented spec
+- After implementation is complete, create `results.md` for the active spec and record every file created or modified, what changed in each file, and why the change was made
 
 ## When To Use
 

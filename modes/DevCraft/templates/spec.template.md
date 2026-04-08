@@ -1,9 +1,3 @@
-> **Deprecated.** This template has been replaced by two separate files:
-> - [`spec.template.md`](./spec.template.md) — for the feature spec (plan, tasks, goals)
-> - [`results.template.md`](./results.template.md) — for the implementation results (files changed and reasons)
->
-> New features should use the subfolder structure `./features/<id>-<FeatureNamePascalCased>/` with `spec.md` and `results.md` as separate files.
-
 # Feature Design: <Feature Name>
 
 ## Type
@@ -99,14 +93,3 @@ Define the implementation tasks for each phase. Tasks should be written as markd
 
 - Unit tests required
 - UI tests required when applicable
-
-## Implementation Notes
-
-Use this section to append the final implementation changes and the reasons they were made after the feature is completed.
-
-## Changed Files
-
-### <File Path>
-
-- Change made:
-- Reason:

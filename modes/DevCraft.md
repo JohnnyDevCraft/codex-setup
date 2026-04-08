@@ -88,18 +88,19 @@ Use `Advanced Branching` for team development or any workflow that benefits from
 
 1. Determine whether the work starts from a work item.
 2. If the work starts from a work item, include a work-item section in the spec that captures the relevant work-item details.
-3. Generate a feature spec for the feature or work item to be implemented.
-4. Set the feature spec type:
+3. Create a subfolder for the feature inside `./features` using the format `<id>-<FeatureNamePascalCased>`.
+4. Inside the subfolder, create `spec.md` using the [spec template](./DevCraft/templates/spec.template.md).
+5. Set the feature spec type:
    - `Feature`
    - `Bug`
    - `Enabler`
    - `Task`
-5. Brainstorm the feature with the user to refine the feature spec.
-6. Analyze the codebase when needed to understand the changes that will need to occur.
-7. Create implementation phases based on goals and feature design.
-8. Once phases are approved, create the tasks for each phase.
-9. The human developer approves the feature spec.
-10. Do not implement code until the feature spec is approved.
+6. Brainstorm the feature with the user to refine the feature spec.
+7. Analyze the codebase when needed to understand the changes that will need to occur.
+8. Create implementation phases based on goals and feature design.
+9. Once phases are approved, create the tasks for each phase.
+10. The human developer approves the feature spec.
+11. Do not implement code until the feature spec is approved.
 11. Do not implement code unless the approved feature spec also contains the tasks that the implementation will execute against.
 12. Once implementation begins, do not add new scope to the active feature spec.
 13. If the user wants to change or iterate on the implemented behavior, create a brand new feature spec and tasks for that new change.
@@ -112,32 +113,32 @@ Use `Advanced Branching` for team development or any workflow that benefits from
      - Create a feature branch from the master branch
      - Use this naming convention:
        - `[username]/[bug|feature|task|enabler]/[ticket-id]-[ai_generated_description_up_to_55_chars]`
-15. After the active implementation branch is ready, implement the feature and keep task status updated as each step is completed.
-16. After implementation is complete:
-   - Generate a list of files changed
-   - For each file, record the changes made and why those changes were made
-17. Commit the changes to the current branch and push to `origin`.
+13. After the active implementation branch is ready, implement the feature and keep task status updated as each step is completed.
+14. After implementation is complete:
+    - Create `results.md` inside the feature subfolder using the [results template](./DevCraft/templates/results.template.md)
+    - For each file created or modified, record the file path, what changed, and why the change was made
+15. Commit the changes to the current branch and push to `origin`.
 
 ### Feature Flow
 
-1. Create or update a feature spec in `./features`.
-2. Use the filename format `<id>-<FeatureNamePascalCased>.md`.
-3. Set the spec type to `Feature`, `Bug`, `Enabler`, or `Task`.
-4. Keep the feature status explicit:
+1. Create a subfolder for the feature inside `./features`.
+2. Use the folder name format `<id>-<FeatureNamePascalCased>`.
+3. Inside the subfolder, create `spec.md` using the [spec template](./DevCraft/templates/spec.template.md).
+4. Set the spec type to `Feature`, `Bug`, `Enabler`, or `Task`.
+5. Keep the feature status explicit:
    - `In Design`
    - `Rejected`
    - `Approved`
    - `Complete`
-5. During design, define the feature plan in phases.
-6. During planning, define the tasks for each phase as checklist items.
-7. The `Plan` and `Tasks` sections should be reviewed and approved with the rest of the feature spec when possible.
-8. If the feature is linked to a work item, capture the work-item details in the feature spec.
-9. Do not implement code until the feature is approved.
-10. Do not implement code until the feature has tasks that explicitly cover the requested implementation work.
+6. During design, define the feature plan in phases inside `spec.md`.
+7. During planning, define the tasks for each phase as checklist items inside `spec.md`.
+8. The `Plan` and `Tasks` sections should be reviewed and approved with the rest of the feature spec when possible.
+9. If the feature is linked to a work item, capture the work-item details in `spec.md`.
+10. Do not implement code until the feature is approved.
 11. Once implementation has started for a feature spec, do not add new scope to that same spec for continued coding.
 12. Any iteration or follow-up change should become a new typed feature spec with its own tasks.
-13. During implementation, check tasks off in the spec as they are completed.
-14. When implementation is complete, append the implemented changes and reasons to the feature spec.
+11. During implementation, check tasks off in `spec.md` as they are completed.
+12. When implementation is complete, create `results.md` inside the same subfolder using the [results template](./DevCraft/templates/results.template.md). Record every file that was created or modified, what changed in it, and why the change was made.
 
 ## Required Project Documents
 
@@ -164,7 +165,8 @@ Use the templates in [`./DevCraft/templates`](./DevCraft/templates).
 - [THEME.template.md](./DevCraft/templates/THEME.template.md)
 - [ARCH.template.md](./DevCraft/templates/ARCH.template.md)
 - [DISCOVERY.template.md](./DevCraft/templates/DISCOVERY.template.md)
-- [Feature-Spec.template.md](./DevCraft/templates/Feature-Spec.template.md)
+- [spec.template.md](./DevCraft/templates/spec.template.md)
+- [results.template.md](./DevCraft/templates/results.template.md)
 
 ## AI Responsibilities In DevCraft
 
@@ -188,15 +190,15 @@ Use the templates in [`./DevCraft/templates`](./DevCraft/templates).
   - `Simple Branching`: update from master and implement on master
   - `Advanced Branching`: update from master and create the feature branch using the DevCraft naming convention
 - Keep task status current while implementing.
-- Record changed files, per-file changes, and reasons in the completed feature spec.
+- After implementation, create `results.md` inside the feature subfolder and record every file that was created or modified, what changed, and why the change was made.
 - Keep the context files current after each completed request.
 - Run required testing before marking implementation complete.
 
 ## Implementation Rules
 
 - Default mode is documentation and design, not immediate implementation.
-- New features begin with a feature spec in `./features`.
-- Bugs, enablers, and tasks also use the feature spec format in `./features`.
+- New features begin with a subfolder inside `./features` named `<id>-<FeatureNamePascalCased>`, containing `spec.md`.
+- Bugs, enablers, and tasks also use the same subfolder format inside `./features`.
 - Feature specs should include a `Plan` section and a `Tasks` section.
 - Feature specs should define a spec type of `Feature`, `Bug`, `Enabler`, or `Task`.
 - Feature specs should include a work-item section when the work starts from a tracked work item.
@@ -208,7 +210,7 @@ Use the templates in [`./DevCraft/templates`](./DevCraft/templates).
 - Before implementation of an approved feature, follow the project’s selected branching model.
 - `Simple Branching` uses only the master branch and is intended for single-user development.
 - `Advanced Branching` creates one branch per approved item and uses the naming convention `[username]/[bug|feature|task|enabler]/[ticket-id]-[ai_generated_description_up_to_55_chars]`.
-- After implementation, record changed files and the reasons for each file change in the feature spec.
+- After implementation, create `results.md` in the feature subfolder and record every file that was created or modified, what changed, and why the change was made.
 - After creating a new Laravel migration, apply it immediately before continuing feature work.
 - If a project uses a `theme/` subfolder, keep `THEME.md` aligned to the assets and Tailwind input CSS stored there.
 - If the project uses assistant-triggered system actions, prefer the shared Assistant Chat Command Queue common design unless the project documents a stronger alternative.

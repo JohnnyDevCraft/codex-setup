@@ -70,3 +70,13 @@ Mode switching should preserve valuable project knowledge, but obsolete workflow
 - `DevCraft`: DevCraft context files and work-item artifacts are the source of truth.
 - `SpecKit`: `constitution.md`, `spec.md`, `plan.md`, `tasks.md`, and related
   SpecKit workflow artifacts are the source of truth.
+
+## New Mode Authoring Rule
+
+When a new mode is added to this repository, it must include change tracking support:
+
+- The mode must require a `results.md` per spec or per unit of work after implementation.
+- The `results.md` must record every file that was created or modified, what changed in each file, and why the change was made.
+- The mode folder should include a `results.template.md` in its `./templates` subfolder as a starting point.
+
+This requirement exists so that every mode produces a consistent, auditable implementation record regardless of which mode is active.

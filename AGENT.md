@@ -316,6 +316,26 @@ During implementation:
 6. Update tool documentation when the shared workflow materially changes.
 7. Update shared guidance in this repository when the user asks for a cross-project rule change.
 
+## Change Tracking Requirement
+
+Regardless of the active project mode, whenever Codex creates or modifies a file during implementation it must produce a detailed record of what changed and why.
+
+This requirement applies in every mode. The location and format of the record depends on the active mode:
+
+- **DevCraft**: Record changes in `results.md` inside the feature spec subfolder (see [DevCraft mode](./modes/DevCraft.md)).
+- **SpecKit**: Record changes in a `results.md` file stored alongside or inside the relevant spec artifacts (see [SpecKit mode](./modes/SpecKit.md)).
+- **Any future mode**: Must also use a `results.md` per spec or per unit of work to track file-level changes and the reasons behind each change.
+
+### What The Change Record Must Include
+
+For every file that is created or modified during a unit of implementation work:
+
+- The file path
+- A description of what changed in that file
+- The reason why that change was made
+
+This record must be written at the end of implementation, before the work is considered complete.
+
 ## Core Rules That Must Remain Visible
 
 - Shared guidance changes should be written back to this repository when the user asks to update core rules.
@@ -328,6 +348,7 @@ During implementation:
 - When onboarding an existing project, detect whether `SpecKit` or `DevCraft` is already in use and do not overwrite the project’s existing workflow configuration.
 - If a project uses a `theme/` subfolder, its `THEME.md` should stay aligned to those assets and Tailwind input CSS files.
 - DevCraft projects should keep root context files current after completed work.
+- Every mode must produce a `results.md` per spec or per unit of work that records files changed, what changed, and why.
 
 If a project has its own local standards that extend these shared standards, agents should apply both. When standards conflict, the more specific project-level rule should win unless explicitly instructed otherwise.
 
