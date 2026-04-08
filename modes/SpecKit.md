@@ -184,6 +184,8 @@ The AI should determine the current SpecKit phase by looking at:
 - Execute from the approved plan and task list
 - Keep progress visible
 - Avoid skipping back into speculative design unless a blocker requires it
+- After implementation is complete, create `results.md` alongside the spec artifacts for the active spec
+- In `results.md`, record every file that was created or modified, what changed, and why the change was made
 
 ### Agent Conduct Rule
 
@@ -201,8 +203,19 @@ The public Spec Kit flow commonly produces or relies on artifacts such as:
 - `spec.md`
 - `plan.md`
 - `tasks.md`
+- `results.md`
 
 These artifacts act as the structured context for implementation.
+
+The `results.md` file is created after implementation is complete. It records every file that was created or modified during implementation, what changed in each file, and why the change was made. See the [results template](./SpecKit/templates/results.template.md).
+
+## Template Files
+
+Use the templates in [`./SpecKit/templates`](./SpecKit/templates).
+
+### Available Templates
+
+- [results.template.md](./SpecKit/templates/results.template.md)
 
 ## AI Responsibilities In SpecKit
 
@@ -221,6 +234,7 @@ These artifacts act as the structured context for implementation.
 - Use clarification and analysis steps when requirements are underspecified or inconsistent
 - Use checklist reviews proactively when a phase appears complete but may still be missing important elements
 - Maintain coherence between constitution-level decisions, feature-level decisions, and the evolving set of approved work
+- After implementation is complete, create `results.md` for the active spec and record every file created or modified, what changed in each file, and why the change was made
 
 ## When To Use
 

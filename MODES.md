@@ -40,3 +40,13 @@ If a project switches from one mode to another:
 5. Regenerate or align project documents using the new mode’s templates and rules.
 
 Mode switching should preserve valuable project knowledge, but obsolete workflow scaffolding from the previous mode should not remain as active source-of-truth material.
+
+## New Mode Authoring Rule
+
+When a new mode is added to this repository, it must include change tracking support:
+
+- The mode must require a `results.md` per spec or per unit of work after implementation.
+- The `results.md` must record every file that was created or modified, what changed in each file, and why the change was made.
+- The mode folder should include a `results.template.md` in its `./templates` subfolder as a starting point.
+
+This requirement exists so that every mode produces a consistent, auditable implementation record regardless of which mode is active.
