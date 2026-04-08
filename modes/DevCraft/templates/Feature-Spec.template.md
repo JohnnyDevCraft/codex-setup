@@ -1,3 +1,9 @@
+> **Deprecated.** This template has been replaced by two separate files:
+> - [`spec.template.md`](./spec.template.md) — for the feature spec (plan, tasks, goals)
+> - [`results.template.md`](./results.template.md) — for the implementation results (files changed and reasons)
+>
+> New features should use the subfolder structure `./features/<id>-<FeatureNamePascalCased>/` with `spec.md` and `results.md` as separate files.
+
 # Feature Design: <Feature Name>
 
 ## Type
