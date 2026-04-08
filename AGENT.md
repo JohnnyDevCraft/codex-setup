@@ -22,6 +22,42 @@ This includes updates to shared:
 
 Agents should treat this repository as the source of truth for reusable Codex operating guidance.
 
+## Coding Guardrail Requirement
+
+Agents must not implement code that is not already represented in project documentation.
+
+Before coding begins, there must be:
+
+- A documented spec or mode-appropriate workflow artifact describing the change
+- A task list or implementation task breakdown that the coding work can execute against
+- Approval to proceed according to the active project mode
+
+This rule applies even when the user asks for a small tweak, refinement, redesign, or follow-up change after seeing a previous implementation.
+
+If the user asks to change behavior, appearance, structure, or implementation and that change is not already documented:
+
+1. Do not code it yet
+2. Create or update the relevant spec or workflow artifact first
+3. Generate or update the tasks for that change
+4. Then proceed only after the active mode’s approval rules are satisfied
+
+## Implemented Spec Immutability Rule
+
+Once implementation begins against a spec and its tasks, that spec should be treated as fixed for that implementation cycle.
+
+After a feature, task set, or mode-specific implementation artifact has moved into implementation:
+
+- Do not add new scope to that same spec in order to continue coding
+- Do not append new implementation tasks to extend the original spec’s scope
+- Do not treat iteration, redesign, or follow-up changes as part of the old implemented spec
+
+If the user wants to change, refine, redesign, or extend something after implementation has started or completed:
+
+1. Create a brand new spec or mode-appropriate workflow artifact for that new change
+2. Generate a new task list for that new spec
+3. Follow the active mode’s approval process
+4. Implement the new change from the new spec only
+
 ## Response Style Requirement
 
 Agents should prefer option-based responses when the workflow reaches a decision point.
@@ -86,7 +122,16 @@ Ask which mode the project should use:
 1. [DevCraft](./modes/DevCraft.md)
 2. [SpecKit](./modes/SpecKit.md)
 
-If the project already has an established workflow, determine whether one of the supported modes already matches it. If not, ask the user which mode should become the source-of-truth workflow.
+If the project already has an established workflow, first detect whether `SpecKit` or `DevCraft` is already being used in the project.
+
+If one of those modes is already clearly present:
+
+- Do not ask the user to re-select the mode unless the project state is ambiguous
+- Record the detected mode in the project root `AGENT.md`
+- Treat the existing workflow artifacts as the current project framework
+- Do not overwrite the project’s existing configuration or workflow files
+
+If no supported mode is clearly present, ask the user which mode should become the source-of-truth workflow.
 
 ### Intake Step 2: Create The Project Root AGENT File
 
@@ -100,6 +145,12 @@ Record:
 - The branching model if the mode uses one
 - The master branch
 - Initial project context as it becomes known
+
+If the project already exists and already uses `SpecKit` or `DevCraft`:
+
+- Create the project root `AGENT.md` as an integration layer for Codex
+- Note the workflow mode already in use
+- Do not replace or rewrite the project’s existing workflow artifacts unless the user explicitly asks for a migration or cleanup
 
 ### Intake Step 3: Load Shared Guidance
 
@@ -146,16 +197,19 @@ For `SpecKit`:
 - Start the constitution phase immediately
 - Use proactive brainstorming, clarification, analysis, checklist, and UX design support
 - Drive toward a coherent constitution before moving deeper into specification and planning
+- Treat the active `SpecKit` artifacts as the project source of truth
+- Avoid creating or maintaining DevCraft-only context documents unless the user explicitly wants cross-mode documentation
 
 ### Intake Step 6: Align Existing Repositories
 
 If Codex is being added to an existing project:
 
 - Read the existing project documents first
-- Detect or confirm the active workflow mode
-- Create or update the project root `AGENT.md`
-- Align project workflow documents to the selected mode
-- Preserve useful existing knowledge while making the selected mode the new operational source of truth
+- Detect whether `SpecKit` or `DevCraft` is already being used
+- If one is already in use, create or update the project root `AGENT.md` to record that fact
+- Do not overwrite existing project configuration that already supports the detected workflow
+- Move directly into working within the existing framework
+- If no supported mode is detected, confirm the workflow mode with the user and align the project to that mode
 
 ## Standards Requirement
 
@@ -242,21 +296,36 @@ When starting work in a project:
 14. Read each relevant common design file in `./designs`.
 15. Apply the selected mode, standards, architecture rules, tool constraints, and common design guidance when designing, implementing, reviewing, and testing code or preparing user-facing tool content.
 
+### Mode-Specific Source Of Truth Rule
+
+- In `SpecKit` mode, the governing project artifacts are the active `constitution.md`,
+  `spec.md`, `plan.md`, `tasks.md`, and other SpecKit workflow documents produced
+  by the selected mode.
+- In `SpecKit` mode, agents should not invent parallel DevCraft-style context
+  files as competing sources of truth unless the user explicitly asks for them.
+- In `DevCraft` mode, the DevCraft project context documents remain the source
+  of truth for that workflow.
+
 During implementation:
 
 1. Use tool documentation to decide whether the work is direct execution, environment setup, or content preparation.
 2. Follow documented commands and workflows before improvising.
-3. Respect tool-specific input limits and output formats.
-4. For Laravel modular monolith work, apply new migrations immediately after creating them so the schema stays ready for downstream development.
-5. Update tool documentation when the shared workflow materially changes.
-6. Update shared guidance in this repository when the user asks for a cross-project rule change.
+3. Do not code against undocumented intent; ensure there is an approved spec and implementation tasks first.
+4. Respect tool-specific input limits and output formats.
+5. For Laravel modular monolith work, apply new migrations immediately after creating them so the schema stays ready for downstream development.
+6. Update tool documentation when the shared workflow materially changes.
+7. Update shared guidance in this repository when the user asks for a cross-project rule change.
 
 ## Core Rules That Must Remain Visible
 
 - Shared guidance changes should be written back to this repository when the user asks to update core rules.
 - Common reusable system patterns should be captured through [Design.md](./Design.md) and `./designs`.
+- Code should not be implemented unless it is backed by documented specs and implementation tasks.
+- Once implementation begins, changes and iterations must move to a new spec rather than extending the active implemented spec.
 - Laravel modular monolith workflows should apply migrations immediately after creating them during development.
 - DevCraft work items should use typed feature specs with `Feature`, `Bug`, `Enabler`, or `Task` types.
+- In `SpecKit` mode, SpecKit workflow artifacts are the source of truth and should not be shadowed by parallel DevCraft context files.
+- When onboarding an existing project, detect whether `SpecKit` or `DevCraft` is already in use and do not overwrite the project’s existing workflow configuration.
 - If a project uses a `theme/` subfolder, its `THEME.md` should stay aligned to those assets and Tailwind input CSS files.
 - DevCraft projects should keep root context files current after completed work.
 

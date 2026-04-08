@@ -24,6 +24,8 @@ This mode is based on the public GitHub Spec Kit workflow and supporting guidanc
 - Use structured planning and tasks before implementation
 - Keep the workflow reviewable and evolvable
 - Use active brainstorming early to improve the quality of the constitution and project direction
+- Require documented specs, plans, and tasks before implementation begins
+- Treat implemented specs as fixed for the duration of that implementation cycle
 
 ## Core Flow
 
@@ -36,6 +38,10 @@ Based on the public Spec Kit workflow, the typical sequence is:
 5. Produce the technical plan
 6. Generate implementation tasks
 7. Implement from the task breakdown
+
+Implementation must not begin unless the requested work is already reflected in the active SpecKit artifacts and backed by tasks.
+
+Once implementation begins from a SpecKit task breakdown, any follow-up change or iteration should go back through a new specification flow rather than extending the in-flight implemented scope.
 
 ## Constitution Brainstorming Flow
 
@@ -184,6 +190,8 @@ The AI should determine the current SpecKit phase by looking at:
 - Execute from the approved plan and task list
 - Keep progress visible
 - Avoid skipping back into speculative design unless a blocker requires it
+- Do not implement undocumented requests; route them back through specify, clarify, plan, and tasks first when needed
+- Do not absorb new scope into the currently implemented spec once implementation is underway; create a new spec flow for the new change
 
 ### Agent Conduct Rule
 
@@ -203,12 +211,19 @@ The public Spec Kit flow commonly produces or relies on artifacts such as:
 - `tasks.md`
 
 These artifacts act as the structured context for implementation.
+They are also the governing source of truth for project intent, requirements,
+planning, and implementation sequencing while the project is operating in
+`SpecKit` mode.
 
 ## AI Responsibilities In SpecKit
 
 - Confirm the project should operate in `SpecKit` mode
 - Create the project root `AGENT.md` immediately and record that `SpecKit` is the active mode
+- Treat SpecKit artifacts as the project source of truth and avoid maintaining
+  parallel DevCraft-style context files unless the user explicitly asks for
+  cross-mode documentation
 - Follow the constitution -> specify -> plan -> tasks -> implement sequence
+- Do not implement code unless the requested change is already documented in SpecKit artifacts and backed by implementation tasks
 - Infer the correct SpecKit phase automatically from context and artifact maturity
 - Transition between SpecKit phase behaviors without waiting for the user to explicitly request an agent switch
 - Treat the constitution step as an active brainstorming and design phase
@@ -221,6 +236,8 @@ These artifacts act as the structured context for implementation.
 - Use clarification and analysis steps when requirements are underspecified or inconsistent
 - Use checklist reviews proactively when a phase appears complete but may still be missing important elements
 - Maintain coherence between constitution-level decisions, feature-level decisions, and the evolving set of approved work
+- If the user changes the requested behavior, design, or scope, update the relevant SpecKit artifacts and tasks before coding the change
+- If the user changes the requested behavior, design, or scope after implementation has started, create a new SpecKit change flow instead of extending the in-flight implemented spec
 
 ## When To Use
 
@@ -246,3 +263,5 @@ If switching away from SpecKit:
 - In this workspace, the constitution phase should include active brainstorming, critique, and UX assistance even if a base Spec Kit install treats constitution more narrowly.
 - In this workspace, SpecKit phase changes should feel automatic and conversational rather than requiring manual agent-selection prompts.
 - In this workspace, `clarify`, `analyze`, and `checklist` behavior should be triggered proactively whenever completeness or coherence is in doubt.
+- In this workspace, coding must always follow documented SpecKit artifacts and task breakdowns; undocumented changes go back through the workflow before implementation.
+- In this workspace, once implementation has started from a SpecKit artifact set, iteration or redesign must flow through a new spec/task cycle rather than mutating the implemented one.

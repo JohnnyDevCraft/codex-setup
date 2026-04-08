@@ -19,6 +19,8 @@ DevCraft is the custom project mode defined by this workspace’s operating rule
 - Project context files are maintained as ongoing source-of-truth documents.
 - Implementation follows explicit approval.
 - Testing is required for completed work.
+- Code is only implemented from documented, task-backed, approved feature specs.
+- Once implementation starts, follow-up changes move to a new feature spec instead of changing the active implemented spec.
 
 ## Branching Models
 
@@ -98,7 +100,10 @@ Use `Advanced Branching` for team development or any workflow that benefits from
 8. Once phases are approved, create the tasks for each phase.
 9. The human developer approves the feature spec.
 10. Do not implement code until the feature spec is approved.
-11. Before implementation begins:
+11. Do not implement code unless the approved feature spec also contains the tasks that the implementation will execute against.
+12. Once implementation begins, do not add new scope to the active feature spec.
+13. If the user wants to change or iterate on the implemented behavior, create a brand new feature spec and tasks for that new change.
+14. Before implementation begins:
    - If using `Simple Branching`:
      - Pull the latest version of the project’s master branch
      - Implement directly on the master branch
@@ -107,11 +112,11 @@ Use `Advanced Branching` for team development or any workflow that benefits from
      - Create a feature branch from the master branch
      - Use this naming convention:
        - `[username]/[bug|feature|task|enabler]/[ticket-id]-[ai_generated_description_up_to_55_chars]`
-12. After the active implementation branch is ready, implement the feature and keep task status updated as each step is completed.
-13. After implementation is complete:
+15. After the active implementation branch is ready, implement the feature and keep task status updated as each step is completed.
+16. After implementation is complete:
    - Generate a list of files changed
    - For each file, record the changes made and why those changes were made
-14. Commit the changes to the current branch and push to `origin`.
+17. Commit the changes to the current branch and push to `origin`.
 
 ### Feature Flow
 
@@ -128,8 +133,11 @@ Use `Advanced Branching` for team development or any workflow that benefits from
 7. The `Plan` and `Tasks` sections should be reviewed and approved with the rest of the feature spec when possible.
 8. If the feature is linked to a work item, capture the work-item details in the feature spec.
 9. Do not implement code until the feature is approved.
-10. During implementation, check tasks off in the spec as they are completed.
-11. When implementation is complete, append the implemented changes and reasons to the feature spec.
+10. Do not implement code until the feature has tasks that explicitly cover the requested implementation work.
+11. Once implementation has started for a feature spec, do not add new scope to that same spec for continued coding.
+12. Any iteration or follow-up change should become a new typed feature spec with its own tasks.
+13. During implementation, check tasks off in the spec as they are completed.
+14. When implementation is complete, append the implemented changes and reasons to the feature spec.
 
 ## Required Project Documents
 
@@ -173,7 +181,9 @@ Use the templates in [`./DevCraft/templates`](./DevCraft/templates).
 - Analyze the codebase when needed before finalizing implementation phases and tasks.
 - Add phased plans and implementation tasks to feature specifications during the design process.
 - Use checklist task items so progress can be tracked directly inside the spec.
-- Avoid implementation until the feature or bug is approved.
+- Avoid implementation until the feature or bug is approved and task-backed.
+- If the user requests a change that is not yet documented, update the feature spec and tasks before coding.
+- If the user requests a change after implementation has started or completed, create a new feature spec instead of changing the implemented one.
 - Before approved implementation starts, follow the branching flow defined by the project:
   - `Simple Branching`: update from master and implement on master
   - `Advanced Branching`: update from master and create the feature branch using the DevCraft naming convention
@@ -193,6 +203,8 @@ Use the templates in [`./DevCraft/templates`](./DevCraft/templates).
 - Feature specs should include a codebase analysis section when analysis is needed to shape implementation.
 - Plans should be phased when that improves implementation clarity.
 - Tasks should be written as markdown checkboxes so they can be marked complete during delivery.
+- Code must not be written unless the requested implementation is already represented in the approved feature spec and its tasks.
+- Once implementation has started for a feature spec, new scope and iteration must be captured in a new feature spec rather than added to the existing implemented spec.
 - Before implementation of an approved feature, follow the project’s selected branching model.
 - `Simple Branching` uses only the master branch and is intended for single-user development.
 - `Advanced Branching` creates one branch per approved item and uses the naming convention `[username]/[bug|feature|task|enabler]/[ticket-id]-[ai_generated_description_up_to_55_chars]`.
