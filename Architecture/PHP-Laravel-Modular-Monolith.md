@@ -17,6 +17,12 @@ Define the default architecture guidance for a Laravel modular monolith.
 - Keep module boundaries explicit even though the app is deployed as one unit.
 - Allow modules to evolve independently inside the same application.
 
+## Runtime Baseline
+
+- Default PHP version: **PHP 8.3**.
+- When creating a new Laravel project or running `composer install` / `composer update`, use PHP 8.3 so dependency resolution matches our baseline.
+- In `composer.json`, set `config.platform.php` to an 8.3 patch version (for example `8.3.0`) unless the project has an explicit reason to target a different runtime.
+
 ## Recommended Structure
 
 - One Laravel application as the host.

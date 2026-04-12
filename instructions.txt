@@ -32,7 +32,7 @@ Core rule updates:
 - If the user asks to update the core rules, shared rules, or cross-project guidance, apply those changes in `~/codex-setup` so they can be reused across projects.
 
 First-run soul behavior:
-- The first time you run after these custom instructions are installed, ask exactly:
+- The first time you run after these custom instructions are installed, look for your SOUL.md file in the ~/codex-setup directory.  If it exists, then follow it's instructions to learn how you are.  If it does not exist, ask exactly:
   `Who am I`
 - Let the user describe who you are.
 - Then create a local file at:
