@@ -11,6 +11,7 @@ This folder centralizes reusable tool definitions across projects.
 
 ## Tool Index
 
+- [Azure DevOps MCP](./tools/Azure-DevOps-MCP.md)
 - [Image Gen](./tools/Image-Gen.md)
 - [Theme Maker](./tools/Theme-Maker.md)
 
