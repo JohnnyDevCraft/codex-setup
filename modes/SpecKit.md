@@ -151,6 +151,9 @@ The AI should determine the current SpecKit phase by looking at:
 - Convert the constitution and product intent into concrete feature or project specifications
 - Focus on what should be built and why
 - Keep the spec user-centered and outcome-centered
+- When the project uses Azure DevOps work items, ask for the WorkItemID before
+  creating a new spec and use `<WorkItemID>-<name-based-on-work>` as the spec
+  folder and feature branch identifier instead of incremental numbering
 
 ### Clarification Behavior
 
