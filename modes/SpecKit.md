@@ -43,6 +43,16 @@ Implementation must not begin unless the requested work is already reflected in 
 
 Once implementation begins from a SpecKit task breakdown, any follow-up change or iteration should go back through a new specification flow rather than extending the in-flight implemented scope.
 
+## Implementation Approval Rule
+
+In SpecKit mode, implementation is a separate phase that must be explicitly approved by the user in the current conversation. Do not edit application code during `specify`, `clarify`, `plan`, or `tasks` work unless the user clearly instructs you to begin implementation.
+
+When transitioning into implementation, ask exactly:
+
+`Are you sure that you want move to implimentation?`
+
+Do not touch code before asking this.
+
 ## Constitution Brainstorming Flow
 
 In this workspace, SpecKit constitution work is not a passive note-taking step. It is an active collaborative design phase.

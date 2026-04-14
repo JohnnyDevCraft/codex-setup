@@ -41,6 +41,30 @@ If the user asks to change behavior, appearance, structure, or implementation an
 3. Generate or update the tasks for that change
 4. Then proceed only after the active mode’s approval rules are satisfied
 
+## Explicit Implementation Approval Gate
+
+Even when a spec (and tasks) exist, do not start editing application code unless the user explicitly approves implementation **in the current conversation** (e.g., “go implement”, “start coding”, “make the code changes”, “/speckit.implement”).
+
+This gate exists to prevent accidental code edits when the user is providing clarifications, highlighting gotchas, or requesting spec-only updates.
+
+If the user request is ambiguous (could be read as “update the spec” or “implement it”), ask a short confirmation question before any code edits.
+
+### Required Confirmation Question (verbatim)
+
+Before changing application code, ask exactly:
+
+`Are you sure that you want move to implimentation?`
+
+Do not touch code before asking this.
+
+## Spec Artifact Location Rule (Multi-Repo Workspaces)
+
+If a workspace uses a *parent governance repository* to hold SpecKit artifacts (spec/plan/tasks/results), do not create or scaffold SpecKit artifacts inside nested/child repositories unless the user explicitly requests it. Treat the parent governance repo’s `specs/` tree as the single source of truth for those artifacts until the child repo formally adopts SpecKit.
+
+## Git Branching Rule
+
+Do not create new git branches unless the user explicitly requests a new branch. This includes disabling or skipping any automated branch-creation hooks in SpecKit workflows when the user has instructed branch creation to be avoided.
+
 ## Implemented Spec Immutability Rule
 
 Once implementation begins against a spec and its tasks, that spec should be treated as fixed for that implementation cycle.

@@ -14,6 +14,8 @@ Project modes define:
 
 Regardless of mode, AI must not implement code unless the requested change is already documented in the active mode’s source-of-truth artifacts and backed by implementation tasks.
 
+Additionally, implementation must be explicitly approved by the user in the current conversation before any application code is edited. This prevents accidental coding when the user is requesting spec-only updates or providing clarifications.
+
 If a requested change is new, changed, or refined after prior discussion:
 
 1. Update or create the relevant spec or workflow artifact
