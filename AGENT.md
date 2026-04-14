@@ -6,6 +6,13 @@ This folder centralizes Codex guidance that is intended to be reused across proj
 
 This is not a normal application project. It is a shared configuration and documentation workspace for defining how agents should work across repositories.
 
+## Available Skills
+
+This repository can also carry reusable Codex skills.
+
+- Skills index: [SKILLS.md](./SKILLS.md)
+- Skill files: [`./skills`](./skills)
+
 ## Shared Rule Update Requirement
 
 If the user says to update the core rules, shared rules, or cross-project guidance, agents should apply those updates in this repository so the changes can be reused across projects.
